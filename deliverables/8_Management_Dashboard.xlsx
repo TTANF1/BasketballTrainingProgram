@@ -1,0 +1,54 @@
+Management Dashboard
+
+KPI Summary
+KPI,Target,Current (Example),Notes
+报名人数,20,20,目标名额
+到场率,85%,85%,到场率目标
+学员满意度,4.4/5,4.5/5,预期值
+术前-术后平均提升,15%,16%,示例提升
+3个月复购率,20%,20%,目标
+推荐率,15%,15%,目标
+
+Financial Summary
+Item,Value (CNY)
+Total Cost (TC),48400
+Unit Cost (UC) (20 pax),2420
+Standard Price,3200
+Early Bird Price,2720
+Projected Revenue (full),=3200*20
+Projected Profit (full),=G12-48400
+
+Scenario Analysis
+Scenario,Participants,Revenue,Profit
+Full (20),20,=3200*20,=H20-48400
+75% (15),15,=3200*15,=H21-48400
+50% (10),10,=3200*10,=H22-48400
+
+Breakeven Analysis
+Breakeven Price (for 20 pax),=48400/20
+Breakeven Participants (at price 3200),=48400/3200
+
+Timeline (Key Milestones)
+T-12 weeks,Project kickoff
+T-10 weeks,Coach hire & course design
+T-8 weeks,Venue & insurance confirmed
+T-6 weeks,Launch registration
+T-2 weeks,Finalize roster & logistics
+Day 0,Setup & check-in
+Day 1-5,Training & daily debrief
+T+1,T+7,Post-event deliverables & survey
+
+Top Risks & Mitigations
+Risk,MItigation
+Injury,On-site medic + insurance
+Low signups,Earlybird & member priority
+Coach absence,Backup coach on contract
+Public relations,Unified comms protocol
+
+Management Recommendations
+1. Confirm minimum roster & payment policy
+2. Finalize backup coach list
+3. Schedule mid-camp quality audit (Day 3)
+
+Notes:
+- All formulas are written as Excel formula placeholders; after importing into Excel, set cells accordingly (e.g., Revenue = Price*Participants).
