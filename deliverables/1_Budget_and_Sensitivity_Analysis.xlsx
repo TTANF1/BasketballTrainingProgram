@@ -1,0 +1,20 @@
+Item,Description,Unit,Quantity,Unit Cost (CNY),Total Cost (CNY),Notes
+Vr,场地租金,hour,4 hrs/day * 5 days = 20 hrs,600,=E2*D2,示例：¥600/小时
+Cc,主教练费用,day,5,2500,=E3*D3,主教练日薪
+Ca,助教费用 (2 人),day,5*2,600,=E4*D4,每位助教日薪
+Pho,摄影/录像,total,5,1200,=E5*D5,或按项目包报价
+Eq,器材(篮球/背心等),lot,1,2000,=E6*D6,一次性采购或折旧
+Ins,保险,person,20,50,=E7*D7,学员个人意外险示例
+Mar,营销与推广,total,1,2500,=E8*D8,含设计与少量投放
+Adm,行政/耗材,total,1,800,=E9*D9,报名系统/打印等
+Food,饮用水/补给,total,1,500,=E10*D10,
+Misc,其他杂费,total,1,700,=E11*D11,
+Subtotal,,,,,=SUM(F2:F11),
+Cont,预备金 (10%),, , ,=F12*0.10,建议按总成本 8~15%
+Total Cost (TC),,,,,=F12+F13,
+
+说明:
+- 公式表达示例：在将此表导入 Excel 后，请在 Total Cost 列使用公式，例如 F2 = E2*D2，并在 Subtotal 行使用 =SUM(F2:F11)。
+- 单位成本 (UC) 计算：UC = TC / N_actual
+- 推荐售价 (按目标毛利率 m): 售价 = UC / (1 - m)
+- 敏感性分析建议：在 Excel 中另建情景表，分别以满额（20 人）、75% (15 人)、50% (10 人) 计算 UC 与 盈亏平衡。
