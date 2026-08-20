@@ -1,20 +1,36 @@
-Item,Description,Unit,Quantity,Unit Cost (CNY),Total Cost (CNY),Notes
-Vr,场地租金,hour,4 hrs/day * 5 days = 20 hrs,600,=E2*D2,示例：¥600/小时
-Cc,主教练费用,day,5,2500,=E3*D3,主教练日薪
-Ca,助教费用 (2 人),day,5*2,600,=E4*D4,每位助教日薪
-Pho,摄影/录像,total,5,1200,=E5*D5,或按项目包报价
-Eq,器材(篮球/背心等),lot,1,2000,=E6*D6,一次性采购或折旧
-Ins,保险,person,20,50,=E7*D7,学员个人意外险示例
-Mar,营销与推广,total,1,2500,=E8*D8,含设计与少量投放
-Adm,行政/耗材,total,1,800,=E9*D9,报名系统/打印等
-Food,饮用水/补给,total,1,500,=E10*D10,
-Misc,其他杂费,total,1,700,=E11*D11,
-Subtotal,,,,,=SUM(F2:F11),
-Cont,预备金 (10%),, , ,=F12*0.10,建议按总成本 8~15%
-Total Cost (TC),,,,,=F12+F13,
+Item,Description,Unit,Quantity,Unit Cost (CNY),Total Cost (formula)
+Vr,场地租金,hour,=4*5,600,=C2*D2
+Cc,主教练费用,day,5,2500,=C3*D3
+Ca,助教费用 (2 人),day,=5*2,600,=C4*D4
+Pho,摄影/录像,total,5,1200,=C5*D5
+Eq,器材(篮球/背心等),lot,1,2000,=C6*D6
+Ins,保险,person,20,50,=C7*D7
+Mar,营销与推广,total,1,2500,=C8*D8
+Adm,行政/耗材,total,1,800,=C9*D9
+Food,饮用水/补给,total,1,500,=C10*D10
+Misc,其他杂费,total,1,700,=C11*D11
 
-说明:
-- 公式表达示例：在将此表导入 Excel 后，请在 Total Cost 列使用公式，例如 F2 = E2*D2，并在 Subtotal 行使用 =SUM(F2:F11)。
-- 单位成本 (UC) 计算：UC = TC / N_actual
-- 推荐售价 (按目标毛利率 m): 售价 = UC / (1 - m)
-- 敏感性分析建议：在 Excel 中另建情景表，分别以满额（20 人）、75% (15 人)、50% (10 人) 计算 UC 与 盈亏平衡。
+Subtotal,, , , ,=SUM(F2:F11)
+Cont,预备金 (10%),, , ,=F12*0.10
+Total Cost (TC),, , , ,=F12+F13
+
+N_actual,实际报名人数 (默认),,20,,
+Unit Cost (UC),单位成本,,=F14/C14,,
+Target Margin (m),目标毛利率 (示例),,0.30,,
+Recommended Price (售价基准),按目标毛利率计算,,=F15/(1-C15),,
+
+
+-- 敏感性分析（Scenario table）
+Scenario,报名人数,TC,UC,Recommended Price,Total Revenue (Price*人数),Profit (Revenue-TC)
+Full (100%),,=F14,=F14/C14,=F15/(1-C15),=G20*C20,=G20*C20-F14
+75%,,=F14,=F14/15,=F15/(1-C15),=G21*C21,=G21*C21-F14
+50%,,=F14,=F14/10,=F15/(1-C15),=G22*C22,=G22*C22-F14
+
+Notes:
+- 在将此文件打开为 Excel 后，请把每个 Total Cost 单元格公式按 Excel 语法置入对应单元格（例如 F2 = C2*D2，Subtotal F12 = SUM(F2:F11) 等）。
+- 我已把关键单元格用示例 Excel 公式写出（行号可能需与实际表格对齐）。
+- 请在 Excel 中根据实际报价调整 Unit Cost 列（第 E 列），表格会自动计算总成本、单位成本与建议售价。
+- 我建议在 Excel 中新增图表：报名人数 vs 单位成本 vs 利润（柱状图/折线图），便于直观决策。
+
+法务与审计备注：
+- 本预算为示例估算，甲方法务/财务在最终发布前应复核费用科目与税务处理方式。
